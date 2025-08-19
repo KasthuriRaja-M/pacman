@@ -13,6 +13,7 @@ A production-quality, fully playable 2D Pac-Man implemented with Pygame. It feat
 - Bonus fruit spawns mid-round, with pickup points and bounce animation
 - Mute toggle, fullscreen toggle, optional FPS display
 - Particle bursts and subtle screen shake for juicy feedback
+- Screenshot hotkey (F12) saves PNG to `screenshots/`
 
 ## Requirements
 - Python 3.10+ recommended
@@ -54,6 +55,7 @@ py -3 pacman\run.py
 - M: Mute/unmute sounds
 - F11: Toggle fullscreen
 - F3: Toggle FPS counter
+- F12: Save screenshot to `screenshots/`
 - Esc: Quit
 
 ## Notes
