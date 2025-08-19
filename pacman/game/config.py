@@ -56,6 +56,10 @@ KEY_RESTART = pygame.K_r
 KEY_MUTE = pygame.K_m
 KEY_FULLSCREEN = pygame.K_F11
 KEY_TOGGLE_FPS = pygame.K_F3
+KEY_SCREENSHOT = pygame.K_F12  # new feature: save a screenshot
+
+# Screenshot
+SCREENSHOT_DIR = "screenshots"
 
 # Utility
 EPSILON = 1e-4

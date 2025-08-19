@@ -1,10 +1,20 @@
 from __future__ import annotations
 
 import sys
+import os
+import time
 import pygame
 
 from . import config
 from .game import Game
+
+
+def _save_screenshot(window: pygame.Surface) -> None:
+	os.makedirs(config.SCREENSHOT_DIR, exist_ok=True)
+	ts = time.strftime("%Y%m%d-%H%M%S")
+	path = os.path.join(config.SCREENSHOT_DIR, f"screenshot-{ts}.png")
+	pygame.image.save(window, path)
+	print(f"Saved screenshot: {path}")
 
 
 def main() -> int:
@@ -36,7 +46,11 @@ def main() -> int:
 						window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 					else:
 						window = pygame.display.set_mode((config.BASE_WIDTH * config.WINDOW_SCALE, config.BASE_HEIGHT * config.WINDOW_SCALE), pygame.SCALED | pygame.RESIZABLE)
-				game.on_key_down(event.key)
+				elif event.key == config.KEY_SCREENSHOT:
+					# Save the already-rendered frame on next flip; here we capture the current backbuffer
+					_save_screenshot(window)
+				else:
+					game.on_key_down(event.key)
 
 		fps_val = clock.get_fps()
 		game.update(dt)
