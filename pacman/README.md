@@ -9,6 +9,10 @@ A production-quality, fully playable 2D Pac-Man implemented with Pygame. It feat
 - Smooth movement with tunnel wrap and precise wall collisions
 - Procedural sprites (no external assets) and soft-glow wall aesthetic
 - HUD: score, lives, level; pause overlay; game over and restart
+- High-score persistence (writes `pacman/highscore.txt`)
+- Bonus fruit spawns mid-round, with pickup points and bounce animation
+- Mute toggle, fullscreen toggle, optional FPS display
+- Particle bursts and subtle screen shake for juicy feedback
 
 ## Requirements
 - Python 3.10+ recommended
@@ -20,6 +24,7 @@ On Windows without Python in PATH, install Python from Microsoft Store or `pytho
 Then in a terminal from the repo root:
 
 ```bash
+python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r pacman/requirements.txt
 ```
 
@@ -46,11 +51,15 @@ py -3 pacman\run.py
 - Arrow keys: Move
 - P: Pause
 - R: Restart (after Game Over)
+- M: Mute/unmute sounds
+- F11: Toggle fullscreen
+- F3: Toggle FPS counter
 - Esc: Quit
 
 ## Notes
 - The game renders to a base canvas and scales to window size. Resize freely.
 - Sounds are generated procedurally; mute system sound if needed.
+- High score saves under `pacman/highscore.txt` next to the code.
 
 ## Project Structure
 - `pacman/game/` core modules (config, entities, maze, pathfinding, ui, assets, game)

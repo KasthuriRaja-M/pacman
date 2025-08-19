@@ -18,6 +18,7 @@ def main() -> int:
 
 	clock = pygame.time.Clock()
 	game = Game()
+	fullscreen = False
 
 	running = True
 	while running:
@@ -29,10 +30,17 @@ def main() -> int:
 			elif event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_ESCAPE:
 					running = False
+				elif event.key == config.KEY_FULLSCREEN:
+					fullscreen = not fullscreen
+					if fullscreen:
+						window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+					else:
+						window = pygame.display.set_mode((config.BASE_WIDTH * config.WINDOW_SCALE, config.BASE_HEIGHT * config.WINDOW_SCALE), pygame.SCALED | pygame.RESIZABLE)
 				game.on_key_down(event.key)
 
+		fps_val = clock.get_fps()
 		game.update(dt)
-		game.draw(window)
+		game.draw(window, fps_value=fps_val)
 		pygame.display.flip()
 
 	pygame.quit()
