@@ -228,3 +228,22 @@ class Ghost(Actor):
 		surf = make_ghost_surface(16, 16, self.color, frightened=fright, blink=blink)
 		rect = surf.get_rect(center=(int(self.x), int(self.y)))
 		surface.blit(surf, rect)
+
+
+class Fruit:
+	def __init__(self, tile: Tuple[int, int]):
+		self.tx, self.ty = tile
+		self.x, self.y = grid_to_pixel(self.tx, self.ty)
+		self.timer = config.FRUIT_LIFETIME
+
+	def update(self, dt: float) -> bool:
+		self.timer -= dt
+		return self.timer > 0
+
+	def rect(self) -> pygame.Rect:
+		return pygame.Rect(int(self.x) - 6, int(self.y) - 6, 12, 12)
+
+	def draw(self, surf: pygame.Surface):
+		bounce = int(2 * abs(ping_pong(pygame.time.get_ticks() / 600.0) - 0.5) * 2)
+		pygame.draw.circle(surf, config.FRUIT_COLOR, (int(self.x), int(self.y - bounce)), 6)
+		pygame.draw.rect(surf, (255, 255, 255), pygame.Rect(int(self.x) - 2, int(self.y) - 8 - bounce, 4, 2))
