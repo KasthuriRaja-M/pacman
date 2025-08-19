@@ -109,6 +109,7 @@ def _tone(frequency: float, duration: float, volume: float = 0.5) -> pygame.mixe
 
 class Sounds:
 	initialized = False
+	muted = False
 	waka_toggle = False
 	waka1: pygame.mixer.Sound | None = None
 	waka2: pygame.mixer.Sound | None = None
@@ -128,9 +129,16 @@ class Sounds:
 		cls.initialized = True
 
 	@classmethod
+	def set_muted(cls, muted: bool) -> None:
+		cls.muted = muted
+		pygame.mixer.stop()
+
+	@classmethod
 	def play_waka(cls):
 		if not cls.initialized:
 			cls.init()
+		if cls.muted:
+			return
 		(cls.waka1 if cls.waka_toggle else cls.waka2).play()
 		cls.waka_toggle = not cls.waka_toggle
 
@@ -138,16 +146,22 @@ class Sounds:
 	def play_power(cls):
 		if not cls.initialized:
 			cls.init()
+		if cls.muted:
+			return
 		cls.power.play()
 
 	@classmethod
 	def play_eat_ghost(cls):
 		if not cls.initialized:
 			cls.init()
+		if cls.muted:
+			return
 		cls.eat_ghost.play()
 
 	@classmethod
 	def play_extra(cls):
 		if not cls.initialized:
 			cls.init()
+		if cls.muted:
+			return
 		cls.extra.play()
