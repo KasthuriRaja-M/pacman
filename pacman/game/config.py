@@ -27,6 +27,12 @@ SCATTER_CHASE_TIMINGS = [
 	(999.0, "CHASE"),
 ]
 
+# Fruit
+FRUIT_SPAWN_TILES = [(13, 17)]  # where fruit can appear
+FRUIT_LIFETIME = 9.0
+FRUIT_SCORE = 100
+FRUIT_SPAWN_THRESHOLDS = [240, 120]  # pellets remaining when fruit appears
+
 # Colors
 DARK_BG = (5, 5, 25)
 WALL_BLUE = (33, 66, 255)
@@ -42,10 +48,14 @@ GHOST_CYAN = (120, 220, 255)
 GHOST_ORANGE = (255, 180, 80)
 FRIGHTENED_BLUE = (40, 40, 255)
 FRIGHTENED_WHITE = (230, 230, 230)
+FRUIT_COLOR = (255, 80, 140)
 
 # Input
 KEY_PAUSE = pygame.K_p
 KEY_RESTART = pygame.K_r
+KEY_MUTE = pygame.K_m
+KEY_FULLSCREEN = pygame.K_F11
+KEY_TOGGLE_FPS = pygame.K_F3
 
 # Utility
 EPSILON = 1e-4
