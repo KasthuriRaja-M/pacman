@@ -31,6 +31,13 @@ DARK_BLUE = (0, 0, 139)
 PELLET_COLOR = (255, 255, 224)
 POWER_COLOR = (255, 255, 0)
 GREEN = (0, 255, 0)
+# Attractive modern colors
+PURPLE = (147, 0, 211)
+GOLD = (255, 215, 0)
+NEON_BLUE = (0, 191, 255)
+NEON_PINK = (255, 20, 147)
+NEON_GREEN = (57, 255, 20)
+DARK_PURPLE = (75, 0, 130)
 
 # Maze layout (simplified)
 MAZE = [
@@ -151,7 +158,7 @@ class Pacman:
             points.append((x, y))
             
         if len(points) > 2:
-            pygame.draw.polygon(screen, GREEN, points)
+            pygame.draw.polygon(screen, GOLD, points)
 
 class Ghost:
     def __init__(self, x: int, y: int, color: Tuple[int, int, int], name: str):
@@ -374,7 +381,7 @@ class Game:
         for y, row in enumerate(MAZE):
             for x, cell in enumerate(row):
                 if cell == '#':
-                    pygame.draw.rect(self.screen, RED, 
+                    pygame.draw.rect(self.screen, NEON_BLUE, 
                                    (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
                     
     def draw_pellets(self):
