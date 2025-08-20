@@ -276,10 +276,10 @@ class Game:
         # Game objects
         self.pacman = Pacman(13, 23)
         self.ghosts = [
-            Ghost(13, 11, RED, "Blinky"),
-            Ghost(11, 11, PINK, "Pinky"),
-            Ghost(15, 11, CYAN, "Inky"),
-            Ghost(13, 13, ORANGE, "Clyde")
+            Ghost(13, 11, NEON_PINK, "Blinky"),
+            Ghost(11, 11, NEON_GREEN, "Pinky"),
+            Ghost(15, 11, PURPLE, "Inky"),
+            Ghost(13, 13, GOLD, "Clyde")
         ]
         
         # Game state
@@ -391,13 +391,13 @@ class Game:
         for pellet in self.pellets:
             x = pellet[0] * TILE_SIZE + TILE_SIZE // 2
             y = pellet[1] * TILE_SIZE + TILE_SIZE // 2
-            pygame.draw.circle(self.screen, PELLET_COLOR, (x, y), 2)
+            pygame.draw.circle(self.screen, WHITE, (x, y), 2)
             
         for pellet in self.power_pellets:
             x = pellet[0] * TILE_SIZE + TILE_SIZE // 2
             y = pellet[1] * TILE_SIZE + TILE_SIZE // 2
             radius = 4 + int(2 * pulse)
-            pygame.draw.circle(self.screen, POWER_COLOR, (x, y), radius)
+            pygame.draw.circle(self.screen, NEON_GREEN, (x, y), radius)
             
     def draw_ui(self):
         # Score
