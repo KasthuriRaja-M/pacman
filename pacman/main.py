@@ -374,7 +374,7 @@ class Game:
         for y, row in enumerate(MAZE):
             for x, cell in enumerate(row):
                 if cell == '#':
-                    pygame.draw.rect(self.screen, BLUE, 
+                    pygame.draw.rect(self.screen, RED, 
                                    (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
                     
     def draw_pellets(self):
