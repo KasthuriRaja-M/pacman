@@ -30,6 +30,7 @@ ORANGE = (255, 182, 85)
 DARK_BLUE = (0, 0, 139)
 PELLET_COLOR = (255, 255, 224)
 POWER_COLOR = (255, 255, 0)
+GREEN = (0, 255, 0)
 
 # Maze layout (simplified)
 MAZE = [
@@ -150,7 +151,7 @@ class Pacman:
             points.append((x, y))
             
         if len(points) > 2:
-            pygame.draw.polygon(screen, YELLOW, points)
+            pygame.draw.polygon(screen, GREEN, points)
 
 class Ghost:
     def __init__(self, x: int, y: int, color: Tuple[int, int, int], name: str):
@@ -260,7 +261,7 @@ class Ghost:
 class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Pac-Man - Yellow Edition")
+        pygame.display.set_caption("Pac-Man - Green Edition")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font(None, 36)
         self.small_font = pygame.font.Font(None, 24)
